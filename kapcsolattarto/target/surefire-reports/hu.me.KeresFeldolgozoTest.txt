@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: hu.me.KeresFeldolgozoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.053 s <<< FAILURE! - in hu.me.KeresFeldolgozoTest
+initializationError(hu.me.KeresFeldolgozoTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.Exception: Method feldolgoz_whenEmptyOperator_thenGiveErrorString() should be public
+
+initializationError(hu.me.KeresFeldolgozoTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Exception: Method feldolgoz_whenNullInput_thenGiveErrorString() should be public
+
+initializationError(hu.me.KeresFeldolgozoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: Method feldolgoz_whenOsszeadas_thenGiveValidResult() should be public
+

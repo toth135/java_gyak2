@@ -19,7 +19,27 @@ public class KeresFeldolgozo {
 
         if("+".equals(input.getMuvelet())) {
             outputValues.setEredmeny(
-                    this.calculator.osszeadas(
+                    this.calculator.add(
+                            input.getOperandus1(),
+                            input.getOperandus2()
+                    )
+            );
+            outputValues.setHibakod(Hibakod.NincsHiba);
+        }
+
+        if("-".equals(input.getMuvelet())) {
+            outputValues.setEredmeny(
+                    this.calculator.subtract(
+                            input.getOperandus1(),
+                            input.getOperandus2()
+                    )
+            );
+            outputValues.setHibakod(Hibakod.NincsHiba);
+        }
+
+        if("*".equals(input.getMuvelet())) {
+            outputValues.setEredmeny(
+                    this.calculator.multiply(
                             input.getOperandus1(),
                             input.getOperandus2()
                     )
@@ -29,13 +49,12 @@ public class KeresFeldolgozo {
 
         if("/".equals(input.getMuvelet())) {
             outputValues.setEredmeny(
-                    this.calculator.osztas(
+                    this.calculator.divide(
                             input.getOperandus1(),
                             input.getOperandus2()
                     )
             );
         }
-
 
         return outputValues;
     }

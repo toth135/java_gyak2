@@ -1,7 +1,7 @@
 package hu.me;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hu.me.logika.CalculatorImpl;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,61 +15,33 @@ public class App {
     public static void main( String[] args ) {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Calculator calc = new Calculator();
+        CalculatorImpl calc = new CalculatorImpl();
         Scanner sc = new Scanner(System.in);
-
-        /*
-        System.out.println("Adja meg az első számot: ");
-        calc.setNum1(sc.nextInt());
-        System.out.println("Adja meg a második számot: ");
-        calc.setNum2(sc.nextInt());
-        */
+        KeresFeldolgozo keresFeldolgozo = new KeresFeldolgozo(calc);
 
         String calcJson =
-                "{ \"operator\" : [ \"+\", \"-\", \"*\", \"/\" ], \"num1\" : \"null\", \"num2\" : 3 }";
+                "{ \"muvelet\" : \"+\",  " +
+                        "\"operandus1\" : 3," +
+                        " \"operandus2\" : 6}";
 
         try {
-            JsonNode jsonNode = objectMapper.readValue(calcJson, JsonNode.class);
-
-
-
-            JsonNode operatorNode = jsonNode.get("operator");
-            String operator = operatorNode.toString();
-            System.out.println("operator = " + operator);
-
-
-            JsonNode num1Node = jsonNode.get("num1");
-            int num1 = num1Node.asInt();
-            System.out.println("num1 = " + num1);
-
-            JsonNode num2Node = jsonNode.get("num2");
-            int num2 = num2Node.asInt();
-            System.out.println("num2 = " + num2);
+            InputValues input = objectMapper.readValue(calcJson, InputValues.class);
 
             System.out.println("Adjon meg egy operátort: ");
-            calc.setOperator(sc.nextLine());
+            input.setMuvelet(sc.next());
+            System.out.println("Adja meg az első számot: ");
+            input.setOperandus1(sc.nextInt());
+            System.out.println("Adja meg a második számot: ");
+            input.setOperandus2(sc.nextInt());
 
 
-            switch (calc.getOperator()) {
-                case("+"):
-                    System.out.println("eredmény: " + calc.add(num1, num2));
-                    break;
-                case("-"):
-                    System.out.println("eredmény: " + calc.subtract(num1, num2));
-                    break;
-                case("*"):
-                    System.out.println("eredmény: " + calc.multiply(num1, num2));
-                    break;
-                case("/"):
-                    System.out.println("eredmény: " + calc.divide(num1, num2));
-                    break;
-            }
+            String json = objectMapper.writeValueAsString(keresFeldolgozo.feldolgoz(input));
+            System.out.println(json);
 
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
-    }
 
     }
-
+}

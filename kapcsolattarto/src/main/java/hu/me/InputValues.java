@@ -2,9 +2,9 @@ package hu.me;
 
 public class InputValues {
 
-    private String muvelet;
-    private Double operandus1;
-    private Double operandus2;
+    private String muvelet = null;
+    private Double operandus1 = 0.0;
+    private Double operandus2 = 0.0;
 
     public String getMuvelet() {
         return muvelet;

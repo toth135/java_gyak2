@@ -12,7 +12,6 @@ public class KeresFeldolgozoTest {
 
     @Test
     void feldolgoz_whenEmptyOperator_thenGiveErrorString() {
-        String input = "";
 
         Calculator calculator = Mockito.mock(Calculator.class);
         KeresFeldolgozo keresFeldolgozo = new KeresFeldolgozo(calculator);
@@ -42,7 +41,7 @@ public class KeresFeldolgozoTest {
     void feldolgoz_whenOsszeadas_thenGiveValidResult() {
 
         Calculator calculator = Mockito.mock(Calculator.class);
-        when(calculator.osszeadas(3, 4)).thenReturn(7.);
+        when(calculator.add(3, 4)).thenReturn(7.0);
 
         KeresFeldolgozo keresFeldolgozo = new KeresFeldolgozo(calculator);
 
@@ -54,7 +53,7 @@ public class KeresFeldolgozoTest {
         OutputValues eredmeny = keresFeldolgozo.feldolgoz(inputValues);
 
         Assert.assertThat(eredmeny.getHibakod(), is(Hibakod.NincsHiba));
-        Assert.assertThat(eredmeny.getEredmeny(), is(7.));
+        Assert.assertThat(eredmeny.getEredmeny(), is(7.0));
     }
 
 

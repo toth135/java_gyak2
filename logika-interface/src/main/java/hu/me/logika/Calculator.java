@@ -2,8 +2,8 @@ package hu.me.logika;
 
 public interface Calculator {
 
-    double osszeadas(double a, double b);
-    double kivonas(double a, double b);
-    double szorzas(double a, double b);
-    double osztas(double a, double b);
+    double add(double a, double b);
+    double subtract(double a, double b);
+    double multiply(double a, double b);
+    double divide(double a, double b);
 }
